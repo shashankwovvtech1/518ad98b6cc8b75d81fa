@@ -47,15 +47,18 @@
 <script>
 	$(".show-checkbox").click(function(argument) {
 		console.log(this.value)
-		$.ajax({
-	      type: "POST",
-	      url: "/products",
-	      data: { product: { name: "Filip", description: "whatever" } },
-	      success:(data) ->
-	        alert data.id
-	        return false
-	      error:(data) ->
-	        return false
-	    })
+		if ($(this).prop("checked") == true) {
+			console.log("checked");
+			$.post('/favorite', { id: this.value, checked: true})
+		}
+		else
+		{
+			console.log("unchecked");
+			$.post('/favorite', { id: this.value, checked: false})
+
+		}
+
+	 
 	})
+	
 </script>

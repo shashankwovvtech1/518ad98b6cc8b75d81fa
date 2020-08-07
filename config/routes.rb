@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
 	root to: "home#index"
   get 'search', to: "home#search"
-	post 'favorite', to: "home#search"
+	post 'favorite', to: "home#favorite"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
