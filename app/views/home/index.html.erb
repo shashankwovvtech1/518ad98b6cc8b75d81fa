@@ -1,0 +1,61 @@
+<%= form_tag search_path, :method => 'get' do%>
+<%= text_field_tag :search, params[:search]%>
+<%= submit_tag "Search"%>
+<% end %>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">
+				Show Name
+			</th>
+			<th scope="col">
+				Channel Name
+			</th>
+			<th scope="col">
+				Show Timing
+			</th>
+			<th>
+				Favorite
+			</th>
+		</tr>
+	</thead>
+	<% @shows.each do |show|%>
+	<tbody>
+		<tr>
+			<td>
+				<%= show.show_name %>
+			</td>
+			<td>
+				<%= show.channel.channel_name %>
+			</td>
+			<td>
+				<%= show.date_of_programme %>
+			</td>
+			<td>
+				kl
+			</td>
+			<td>
+			      <%= check_box_tag "show[]", show.id, false,
+			          :class => "show-checkbox", :id => "#{show.id}" %>
+			</td>
+		</tr>
+	</tbody>
+
+	<% end %>
+</table>
+
+<script>
+	$(".show-checkbox").click(function(argument) {
+		console.log(this.value)
+		$.ajax({
+	      type: "POST",
+	      url: "/products",
+	      data: { product: { name: "Filip", description: "whatever" } },
+	      success:(data) ->
+	        alert data.id
+	        return false
+	      error:(data) ->
+	        return false
+	    })
+	})
+</script>

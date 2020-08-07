@@ -1,0 +1,50 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">
+				Show Name
+			</th>
+			<th scope="col">
+				Channel Name
+			</th>
+			<th scope="col">
+				Show Timing
+			</th>
+		</tr>
+	</thead>
+	<% @show.each do |show|%>
+	<tbody>
+		<tr>
+			<td>
+				<%= show.show_name %>
+			</td>
+			<td>
+				<%= show.channel.channel_name %>
+			</td>
+			<td>
+				<%= show.date_of_programme %>
+			</td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">
+				Channel Name
+			</th>
+		</tr>
+	</thead>
+	<% @channel.each do |channel|%>
+	<tbody>
+		<tr>
+			<td>
+				<%= channel.channel_name %>
+			</td>
+			
+		</tr>
+	</tbody>
+	<% end %>
+</table>
